@@ -1,0 +1,8 @@
+Description:
+    Easy way to create action classes so you do not get the name wrong.
+
+Example:
+    rails generate xavius:action create posts
+
+    This will create:
+        app/actions/posts/create_action.rb
