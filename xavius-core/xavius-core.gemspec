@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'railties', '>= 5.0', '< 6.1'
 
   s.add_development_dependency 'bundler', '~> 1.17'
-  s.add_development_dependency 'rake', '~> 12.0'
+  s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec-rails', '~> 3.9'
   s.add_development_dependency 'pry-byebug', '~> 3.7'
   s.add_development_dependency 'factory_bot', '~> 5.1'

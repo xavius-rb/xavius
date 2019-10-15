@@ -2,6 +2,12 @@
 services:
   - docker
 
-before_install: docker build --tag=spec/base .
-install: skip
-script: docker run --rm spec/base bundle exec rspec
+jobs:
+  include:
+    - stage: test xavius-core
+      name: "Rails 5.0"
+      install: skip
+      script: docker run --rm -v "$PWD:/home" -w /home/xavius-core -e BUNDLE_GEMFILE=/home/Gemfile.rails-5.0 xavius/base /home/ci/build.sh
+    - script: docker run --rm -v "$PWD:/home" -w /home/xavius-core -e BUNDLE_GEMFILE=/home/Gemfile xavius/base /home/ci/build.sh
+      install: skip
+      name: "Rails 6.0"
