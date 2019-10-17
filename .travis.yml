@@ -2,12 +2,15 @@
 services:
   - docker
 
-jobs:
+matrix:
   include:
-    - stage: test xavius-core
-      name: "Rails 5.0"
-      install: skip
-      script: docker run --rm -v "$PWD:/home" -w /home/xavius-core -e BUNDLE_GEMFILE=/home/Gemfile.rails-5.0 xavius/base /home/ci/build.sh
-    - script: docker run --rm -v "$PWD:/home" -w /home/xavius-core -e BUNDLE_GEMFILE=/home/Gemfile xavius/base /home/ci/build.sh
-      install: skip
-      name: "Rails 6.0"
+    - name: "Rails 6.0.x"
+      env:
+        - CUSTOM_GEMFILE=/home/Gemfile
+    - name: "Rails 5.0.x"
+      env:
+        - CUSTOM_GEMFILE=/home/Gemfile.rails-5.0
+
+before_install: skip
+install: skip
+script: docker run --rm -v "$PWD:/home" -e BUNDLE_GEMFILE=$CUSTOM_GEMFILE xavius/base /home/ci/build.sh

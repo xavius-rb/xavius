@@ -2,7 +2,9 @@ PATH
   remote: .
   specs:
     xavius (0.1.0)
+      xavius-bootstrap (= 0.1.0)
       xavius-core (= 0.1.0)
+    xavius-bootstrap (0.1.0)
     xavius-core (0.1.0)
       activemodel (>= 5.0, < 6.1)
       activerecord (>= 5.0, < 6.1)

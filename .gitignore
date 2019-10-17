@@ -1,1 +1,4 @@
 xavius-core/.rspec_status
+
+Gemfile.lock
+Gemfile.rails-5.0.lock

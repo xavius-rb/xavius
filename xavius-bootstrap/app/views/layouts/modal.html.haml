@@ -1,0 +1,8 @@
+.modal-dialog.modal-lg{ role: 'document' }
+  .modal-content{ class: "#{controller.controller_name} #{controller.action_name}" }
+    .modal-header
+      %button.close{ data: { dismiss: "modal" }, aria_label: "Close" }
+        %span{ aria_hidden: "true" } &times;
+      %h5.modal-title= yield(:modal_title)
+    .modal-body
+      .container= yield(:modal_body)

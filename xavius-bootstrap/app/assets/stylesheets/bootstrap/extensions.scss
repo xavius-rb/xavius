@@ -1,0 +1,15 @@
+.modal-header {
+  display: block !important;
+  background: $modal-header-bg;
+}
+
+.card-header {
+  background: $card-header-bg;
+}
+
+.nav-item:hover .nav-link {
+  background: $gray-200 !important;
+  border-bottom: 2px double $base-color;
+  -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, $gray-200 50%, rgba(0,0,0,.6) 70%);
+  -webkit-mask-size: 200%;
+}

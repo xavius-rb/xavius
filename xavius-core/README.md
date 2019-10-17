@@ -38,8 +38,6 @@ end
 
 ### Overriding Actions
 
-A few customisation options are available if you need to override some behaviour. Override `#index` action passing a block to `super`:
-
 If:
 - you need to set additional variables
 
@@ -48,26 +46,11 @@ class PostsController < ApplicationController
   include Xavius::Controller
 
   def index
-    super do |result, options|
-      @instance_array = [1,2,3]
-      options.merge!(locals: { list: result })
-    end
+    @list = perform_action
   end
 end
 ```
 
-- you want to customise alerts or redirecting:
-
-```ruby
-class PostsController < ApplicationController
-  include Xavius::Controller
-
-  def create
-    # Overriding notice alerts OR location.
-    super(notice: 'This Post has been created!', location: resource_index_path)
-  end
-end
-```
 
 ## Remote Controller
 
@@ -88,9 +71,12 @@ Action classes are subclasses of `Xavius::Action::Base`. If you follow the conve
 
 All action classes are nampespaced by controller name: **<controller_name>::<action_name>Action**
 
-
 To prevent mistakes when naming your class, use our generator `bin/rails generate xavius:action index posts` to create your action class.
 
+Action classes can been seen as Service Objects so each action has its purpose. Actions classes offer:
+
+- Prevent Fat Controllers: controllers are the doors for your action classes, they are a pure translation of URLs. Avoid putting logic in controllers.
+- Ease unit testing: rest assured your basic controller's REST functionality is tested so you may only test your action.
 
 ```ruby
 # app/actions/posts/index_action.rb
@@ -114,6 +100,8 @@ end
 
 ```
 
+In your controllers you can call `perform_action` which executes the code above according to `params[:action]`.
+
 Run: `bin/rails generate xavius:action update admin/cars` to generate namespaced classes appropriately:
 
 ```ruby
@@ -133,9 +121,11 @@ In `Xavius::Action::Base` subclass, you have access to:
 
 ## Form Classes
 
-Form classes are subclasses of `Xavius::Form::Base`. You can follow the same convention for naming your Form class. Form classes are basically ActiveModel instances, so you can validate your request action-based
+Form classes are subclasses of `Xavius::Form::Base`. You can follow the same convention for naming your Form class so Xavius will automatically load your validations. We also have form generators so you can create classes mistake-free. Run `bin/rails generate xavius:form create posts`
 
-We also have form generators so you can create classes mistake-free. Run `bin/rails generate xavius:form create posts`
+Form classes are basically ActiveModel instances, so you can apply any ActiveModel validations that you don't want to be globally accessed when your ActiveRecord instance is created or updated. This offers:
+- Extremelly flexibility: one ActiveRecord class can potentially have, in different contexts, a different set of validations to run.
+- Prevent Fat Models: encapsulating validations per action form frees ActiveRecord from dedicated extensive logic.
 
 ```ruby
 # app/forms/posts/create_form.rb
@@ -145,11 +135,3 @@ class Posts::CreateForm < Xavius::Form::Base
 end
 
 ```
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/xavius-rb/xavius. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
