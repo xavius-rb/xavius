@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'xavius-core', version
   s.add_dependency 'xavius-bootstrap', version
 
-  s.add_development_dependency 'bundler', '~> 1.17'
+  s.add_development_dependency 'bundler', '~> 2.1'
   s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec-rails', '~> 3.9'
   s.add_development_dependency 'pry-byebug', '~> 3.7'

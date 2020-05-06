@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
     "changelog_uri"   => "https://github.com/xavius-rb/xavius/tree/master/xavius-bootstrap/CHANGELOG.md"
   }
 
-  s.add_development_dependency 'bundler', '~> 1.17'
+  s.add_development_dependency 'bundler', '~> 2.1'
   s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec-rails', '~> 3.9'
 end

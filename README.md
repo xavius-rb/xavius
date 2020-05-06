@@ -6,7 +6,7 @@ Wondering how to start with Ruby on Rails? Then follow these steps to get you se
 
 - Install and learn a little bit about [Docker](https://docs.docker.com/get-started/)
 - Download our custom image: ```docker pull xavius/base```
-- Run our image: ```docker run --rm -it -v "$PWD:/home" xavius/base```
+- Run our image: ```docker run --rm -it -v "$PWD:/usr/src/app" xavius/base```
 - The command above will start the terminal inside xavius/base container.
 - Install Rails manually: ```gem install rails``` or run ```xavius new [app_name]```. The latter will install latest Rails available and create your app applying a nice-to-have boot template.
 

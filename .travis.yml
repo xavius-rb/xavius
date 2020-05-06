@@ -6,11 +6,11 @@ matrix:
   include:
     - name: "Rails 6.0.x"
       env:
-        - CUSTOM_GEMFILE=/home/Gemfile
+        - CUSTOM_GEMFILE=/usr/src/app/Gemfile
     - name: "Rails 5.0.x"
       env:
-        - CUSTOM_GEMFILE=/home/Gemfile.rails-5.0
+        - CUSTOM_GEMFILE=/usr/src/app/Gemfile.rails-5.0
 
 before_install: skip
 install: skip
-script: docker run --rm -v "$PWD:/home" -e BUNDLE_GEMFILE=$CUSTOM_GEMFILE xavius/base /home/ci/build.sh
+script: docker run --rm -v "$PWD:/usr/src/app" -e BUNDLE_GEMFILE=$CUSTOM_GEMFILE xavius/base /usr/src/app/ci/build.sh
