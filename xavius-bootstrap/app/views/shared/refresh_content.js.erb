@@ -1,0 +1,5 @@
+<% if local_assigns[:resource_url]%>
+window.location.href = "<%= local_assigns[:resource_url]%>";
+<% else %>
+location.reload(true);
+<%end%>

@@ -7,5 +7,11 @@ module Xavius
     extend ActiveSupport::Concern
     include Xavius::Core::Parameters
     include Xavius::Core::BaseActions
+
+    included do
+      if Xavius.try(:bootstrap_layout) || false
+        layout Proc.new { |controller| controller.request.xhr? ? "modal" : "xavius" }
+      end
+    end
   end
 end

@@ -10,6 +10,12 @@ module Xavius
     include Xavius::Core::BaseActions
     include Xavius::Core::ResponsiveModal
 
+    included do
+      if Xavius.try(:bootstrap_layout) || false
+        layout Proc.new { |controller| controller.request.xhr? ? "modal" : "xavius" }
+      end
+    end
+
     def new
       render_in_modal(template: modal_template, locals: locals)
     end

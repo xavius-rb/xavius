@@ -1,0 +1,8 @@
+- flash.each do |name, msg|
+  - if msg.is_a?(String) && msg.length > 0
+    :javascript
+      $.notify("#{j(msg)}", {
+        type: "#{(name == 'notice') ? 'success' : 'danger'}",
+        newest_on_top: true,
+        mouse_over: "pause",
+      });

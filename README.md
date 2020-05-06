@@ -3,11 +3,12 @@
 
 ## Getting Started
 Wondering how to start with Ruby on Rails? Then follow these steps to get you setup appropriately:
-1 - Install and learn a little bit about [Docker](https://docs.docker.com/get-started/)
-2 - Download our custom image: ```docker pull xavius/base```
-3 - Run our image: ```docker run --rm -it -v "$PWD:/home" xavius/base```
-4 - The command above will start the terminal inside xavius/base container.
-5 - Install Rails manually: ```gem install rails``` or run ```xavius new [app_name]```. The latter will install latest Rails available and create your app applying a nice-to-have boot template.
+
+- Install and learn a little bit about [Docker](https://docs.docker.com/get-started/)
+- Download our custom image: ```docker pull xavius/base```
+- Run our image: ```docker run --rm -it -v "$PWD:/home" xavius/base```
+- The command above will start the terminal inside xavius/base container.
+- Install Rails manually: ```gem install rails``` or run ```xavius new [app_name]```. The latter will install latest Rails available and create your app applying a nice-to-have boot template.
 
 ## Installation
 
@@ -22,8 +23,10 @@ And then execute:
     $ bundle
 
 
+Be mindfull this will include the entire Framework for you to work with. You can also include only xavius-core to benefit from embedded CRUD controllers and a well organised action-oriented feature.
+
 ## Xavius Core
-First Xavius component which stores basic artifacts to make your application RDD. Check [xavius-core](https://github.com/xavius-rb/xavius/tree/master/xavius-core).
+Xavius component which stores the basic artifacts to make your application RDD. Check out [xavius-core](https://github.com/xavius-rb/xavius/tree/master/xavius-core).
 
 ## Contributing
 

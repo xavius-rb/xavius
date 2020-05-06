@@ -1,0 +1,25 @@
+$white: #f5f5f5 !default;
+$red: #ff4500;
+$green: #2e8b57;
+
+$base-color: #ffa500 !default;
+$light: tint($base-color, 80%) !default;
+$dark: shade($base-color, 60%) !default;
+
+$table-header-bg: tint($base-color, 64%) !default;
+$modal-header-bg: $table-header-bg !default;
+$card-header-bg: $light !default;
+
+$gray-300: $base-color;
+$gray-200: $table-header-bg;
+$table-accent-bg: $card-header-bg;
+
+$input-border-radius: 18px;
+$btn-border-radius: 0.65rem;
+
+$theme-colors: (
+  "primary": $base-color,
+  "secondary": $dark,
+  "danger": $red,
+  "success": $green,
+);

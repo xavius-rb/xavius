@@ -1,0 +1,26 @@
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+.shadow {
+  -webkit-box-shadow: 14px 10px 27px -8px rgba(0,0,0,0.88);
+  -moz-box-shadow: 14px 10px 27px -8px rgba(0,0,0,0.88);
+  box-shadow: 14px 10px 27px -8px rgba(0,0,0,0.88);
+}
+
+.grow { transition: all .3s ease-in-out; }
+.grow:hover { transform: scale(1.3); }

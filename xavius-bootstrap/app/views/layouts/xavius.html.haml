@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title AgileCards
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+    .body
+      = render 'layouts/flash_messages'
+      %nav.body__sidebar
+        .text-center
+          = link_to root_path, class: 'navbar-brand' do
+            = image_tag("xavius.png", class: 'img-fluid', size: 60)
+        %ul.nav.body__sidebar__sidebar-menu
+          = render 'layouts/sidebar_menu'
+      .body__content
+        %nav.navbar
+          #sidebarIcon.grow
+            %i.fas.fa-bars
+        .body__content__page
+          = yield
+    .footer
+      %footer.navbar.navbar-light
+        .container-fluid.flex-column
+          %p.navbar-text
+            = "Xavius Suite &copy; #{Date.today.year} All rights reserved.".html_safe
+    #modal
+      #main-modal.modal.fade{ role: "dialog", data: { backdrop: 'static' } }

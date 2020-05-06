@@ -2,6 +2,15 @@
 services:
   - docker
 
-before_install: docker build --tag=spec/base .
+matrix:
+  include:
+    - name: "Rails 6.0.x"
+      env:
+        - CUSTOM_GEMFILE=/home/Gemfile
+    - name: "Rails 5.0.x"
+      env:
+        - CUSTOM_GEMFILE=/home/Gemfile.rails-5.0
+
+before_install: skip
 install: skip
-script: docker run --rm spec/base bundle exec rspec
+script: docker run --rm -v "$PWD:/home" -e BUNDLE_GEMFILE=$CUSTOM_GEMFILE xavius/base /home/ci/build.sh
