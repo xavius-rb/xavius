@@ -1,5 +1,4 @@
-enabled = Xavius.try(:bootstrap_gem) || true
-if enabled
+if Xavius.try(:bootstrap_gem) || false
   ActionView::Base.field_error_proc = proc do |html_tag, _instance|
     class_attr_index = html_tag.index 'class="'
 

@@ -1,4 +1,4 @@
-RSpec.shared_examples "Xavius Action" do
+RSpec.shared_examples :xavius_action do
   it { is_expected.to be_a_kind_of(Xavius::Action::Base) }
 
   let(:params) { ActionController::Parameters.new({ controller: 'model_tests' }) }

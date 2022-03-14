@@ -2,6 +2,7 @@ module Xavius
   class UnknownActionClassError < StandardError; end
 end
 
+#require 'application_responder'
 require 'xavius/form/base'
 
 require 'xavius/core/version'

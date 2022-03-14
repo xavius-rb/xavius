@@ -28,6 +28,18 @@ module Xavius
         @resource ||= resource_class.find_by(id: params[:id]) || resource_class.new(resource_params)
       end
 
+      def form
+        @form ||= if resource_params.nil?
+          resource
+        else
+          form_class.new(resource_params)
+        end
+      end
+
+      def index?
+        action_name == 'index'
+      end
+
       private
         def action_class_name
           unless action_name.in?(%w(index create update destroy))

@@ -31,6 +31,10 @@ module Xavius
         I18n.t('.success', default: I18n.t(:success, scope: [:resource, action_name], resource_name: resource_human_name))
       end
 
+      def controller_name_sanitized
+        controller_name.gsub("/", "_")
+      end
+
       private
       def action_class
         infer_user_action_class || "Xavius::Actions::#{action_name.camelize}".constantize
@@ -58,15 +62,11 @@ module Xavius
       end
 
       def collection_name
-        infer_from_controller.freeze
+        controller_name_sanitized.freeze
       end
 
       def instance_name
-        infer_from_controller.singularize.freeze
-      end
-
-      def infer_from_controller
-        controller_name.gsub("/", "_")
+        controller_name_sanitized.singularize.freeze
       end
     end
   end

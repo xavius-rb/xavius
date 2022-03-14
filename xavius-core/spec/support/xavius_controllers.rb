@@ -86,6 +86,8 @@ RSpec.shared_examples :xavius_controller do
   end
 
   describe 'DELETE #destroy' do
+    let(:params) { nil }
+
     it do
       expect(base_class).to receive(:find_by).with(id: "3") { resource }
       expect_any_instance_of(base_class).to receive(:valid?) { true }
