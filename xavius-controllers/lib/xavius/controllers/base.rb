@@ -6,7 +6,7 @@ module Xavius
       extend ActiveSupport::Concern
 
       included do
-        include Helpers
+        include Xavius::Controllers::Helpers
         before_action :set_resource
       end
 

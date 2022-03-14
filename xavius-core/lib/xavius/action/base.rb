@@ -12,14 +12,15 @@ module Xavius
       end
 
       def execute_action
-        return execute if action_name == 'index'
-        form = form_class.new(resource_params)
+        return execute if index?
+
         if form.valid?
           execute
         else
           resource.errors.copy!(form.errors)
           resource.assign_attributes(resource_params)
         end
+
         resource
       end
 
@@ -27,6 +28,7 @@ module Xavius
         def execute
           raise NotImplementedError, "Your custom action #{self.class} must implement #execute method"
         end
+
     end
   end
 end

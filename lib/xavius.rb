@@ -1,5 +1,5 @@
 require 'xavius-core'
-require 'xavius-bootstrap'
+#require 'xavius-bootstrap'
 
 module Xavius
   # Setup xavius-bootstrap gem

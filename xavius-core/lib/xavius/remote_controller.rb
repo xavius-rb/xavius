@@ -2,6 +2,7 @@ require 'active_support/concern'
 require 'xavius/core/parameters'
 require 'xavius/core/base_actions'
 require 'xavius/core/responsive_modal'
+#require 'application_responder'
 
 module Xavius
   module RemoteController
@@ -11,6 +12,7 @@ module Xavius
     include Xavius::Core::ResponsiveModal
 
     included do
+      #self.responder = ApplicationResponder
       if Xavius.try(:bootstrap_layout) || false
         layout Proc.new { |controller| controller.request.xhr? ? "modal" : "xavius" }
       end
@@ -37,10 +39,6 @@ module Xavius
     protected
       def modal_template
         "#{controller_name.gsub("/", "_")}/#{action_name}"
-      end
-
-      def perform_action
-        action_class.new(params).execute_action
       end
   end
 end
