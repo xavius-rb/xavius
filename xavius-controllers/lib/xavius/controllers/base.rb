@@ -20,7 +20,7 @@ module Xavius
             format.html { redirect_to action_context.resource, notice: success_message }
             format.json { render :show, status: :created, location: action_context.resource }
           else
-            format.html { render :new }
+            format.html { render :new, status: :unprocessable_entity }
             format.json { render json: action_context.resource.errors, status: :unprocessable_entity }
           end
         end
@@ -32,7 +32,7 @@ module Xavius
             format.html { redirect_to action_context.resource, notice: success_message }
             format.json { render :show, status: :ok, location: action_context.resource }
           else
-            format.html { render :edit }
+            format.html { render :edit, status: :unprocessable_entity }
             format.json { render json: action_context.resource.errors, status: :unprocessable_entity }
           end
         end
